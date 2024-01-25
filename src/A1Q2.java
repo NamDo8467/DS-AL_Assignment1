@@ -99,7 +99,6 @@ public class A1Q2 {
     	queue.dequeue();
     	queue.dequeue();
     	
-    	queue.print();
         int[] arr = {4, 5, 2, 1, 3};
         System.out.println(3 == solve(arr));
 
