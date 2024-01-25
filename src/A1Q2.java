@@ -20,16 +20,19 @@ class MyStack {
 	}
 	
 	void push(int element) {
-		this.stack.add(element);
+		stack.add(element);
 		current_size += 1;
 	}
 	
 	int pop() {
-		stack.remove(current_size - 1);
+		int top_of_the_stack = stack.remove(current_size - 1);
 		current_size -= 1;
-		return 0;
+		return top_of_the_stack;
 	}
 	
+	int peek() {
+		return stack.get(current_size-1);
+	}
 	boolean isEmpty() {
 		return current_size == 0;
 	}
@@ -62,10 +65,12 @@ class MyQueue {
 	boolean isEmpty() {
 		return current_size == 0;
 	}
+	int getSize() {
+		return current_size;
+	}
 	void print() {
 		for(int i = 0; i < current_size; i++) {
 			System.out.println(queue.get(i));
-			System.out.println(i);
 		}
 	}
 }
@@ -80,6 +85,43 @@ public class A1Q2 {
     public static int solve(int[] arr) {
     	
         // TODO: implement this function
+    	MyQueue exit_tunnel = new MyQueue();
+    	MyStack buffer_line = new MyStack();
+    	
+    	int look_for = 1;
+    	
+    	for(int i = 0; i < arr.length; i++) {
+    		
+    		if(arr[i] == look_for) {
+    			exit_tunnel.enqueue(arr[i]);
+    			look_for += 1;
+    		}else {
+    			while(!buffer_line.isEmpty()) {
+    	    		if(buffer_line.peek() == look_for){
+    					exit_tunnel.enqueue(buffer_line.pop());
+    					look_for += 1;
+    	    			
+    	    		}else {
+    	    			break;
+    	    		}
+    	    	}
+    			buffer_line.push(arr[i]); 
+    		}
+    	}
+    	
+    	while(!buffer_line.isEmpty()) {
+    		if(buffer_line.peek() == look_for){
+				exit_tunnel.enqueue(buffer_line.pop());
+				look_for += 1;
+    			
+    		}else {
+    			break;
+    		}
+    	}
+//    	buffer_line.print();
+    	if(!exit_tunnel.isEmpty()) {
+    		return exit_tunnel.getSize();
+    	}
         return 0;
     }
 
@@ -91,15 +133,9 @@ public class A1Q2 {
     public static void main(String[] args) {
 
         // Printing "true" means the return value is correct.
-
-    	MyQueue queue = new MyQueue();
-    	queue.enqueue(2);
-    	queue.enqueue(3);
-    	queue.enqueue(4);
-    	queue.dequeue();
-    	queue.dequeue();
     	
-        int[] arr = {4, 5, 2, 1, 3};
+    	// 4,5,2,1,3
+        int[] arr = {4,5,2,1,3}; 
         System.out.println(3 == solve(arr));
 
         arr = new int[] {5, 4, 3, 1, 2};
