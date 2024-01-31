@@ -99,23 +99,25 @@ public class A1Q2 {
     			exit_tunnel.enqueue(arr[i]);
     			look_for += 1;
     		}else {
+    			// check for valid number in the buffer line
     			while(buffer_line.peek() == look_for && !buffer_line.isEmpty()) {
 					exit_tunnel.enqueue(buffer_line.pop());
 					look_for += 1;
     	    	}
+    			
+    			// if there is no valid number in the buffer line, put a new number into it.
     			buffer_line.push(arr[i]); 
     		}
     	}
     	
+    	// after going through the array, look for the valid number in the buffer line
     	while(buffer_line.peek() == look_for && !buffer_line.isEmpty()) {
 			exit_tunnel.enqueue(buffer_line.pop());
 			look_for += 1;
     	}
     	if(!exit_tunnel.isEmpty()) {
-//    		exit_tunnel.print();
     		return exit_tunnel.getSize();
     	}
-//    	System.out.println();
         return 0;
     }
 
@@ -143,12 +145,5 @@ public class A1Q2 {
 
         arr = new int[] {7, 1, 5, 4, 3, 2, 8, 10, 9, 6};
         System.out.println(6 == solve(arr));
-        
-        //My test cases
-        arr = new int[] {6,7,9,2,1,5,3,4};
-        System.out.println(5 == solve(arr));
-        
-        arr = new int[] {1,6,2,3,4};
-        System.out.println(4 == solve(arr));
     }
 }
