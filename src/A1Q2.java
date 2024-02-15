@@ -31,6 +31,9 @@ class MyStack {
 	}
 	
 	int peek() {
+		if(current_size == 0) {
+			return 0;
+		}
 		return stack.get(current_size-1);
 	}
 	boolean isEmpty() {
@@ -96,29 +99,22 @@ public class A1Q2 {
     			exit_tunnel.enqueue(arr[i]);
     			look_for += 1;
     		}else {
-    			while(!buffer_line.isEmpty()) {
-    	    		if(buffer_line.peek() == look_for){
-    					exit_tunnel.enqueue(buffer_line.pop());
-    					look_for += 1;
-    	    			
-    	    		}else {
-    	    			break;
-    	    		}
+    			// check for valid number in the buffer line
+    			while(buffer_line.peek() == look_for && !buffer_line.isEmpty()) {
+					exit_tunnel.enqueue(buffer_line.pop());
+					look_for += 1;
     	    	}
+    			
+    			// if there is no valid number in the buffer line, put a new number into it.
     			buffer_line.push(arr[i]); 
     		}
     	}
     	
-    	while(!buffer_line.isEmpty()) {
-    		if(buffer_line.peek() == look_for){
-				exit_tunnel.enqueue(buffer_line.pop());
-				look_for += 1;
-    			
-    		}else {
-    			break;
-    		}
+    	// after going through the array, look for the valid number in the buffer line
+    	while(buffer_line.peek() == look_for && !buffer_line.isEmpty()) {
+			exit_tunnel.enqueue(buffer_line.pop());
+			look_for += 1;
     	}
-//    	buffer_line.print();
     	if(!exit_tunnel.isEmpty()) {
     		return exit_tunnel.getSize();
     	}
