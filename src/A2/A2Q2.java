@@ -37,6 +37,17 @@ public class A2Q2 {
         public int getFromPeg() { return this.fromPeg; };
         public int getToPeg() { return this.toPeg; };
     }
+    
+    public static void threePegTOHHelper(int n, ArrayList<Move> moves, int diskValue) {
+    	if(n == 1) {
+    		Move move = new Move(1,2);
+    		moves.add(move);
+    	}
+    	
+    	Move move = new Move(1,3);
+    	
+    	moves.add(move);
+    }
 
     /**
      * Return the sequence of moves that solves the 3-peg TOH problem with n disks.
