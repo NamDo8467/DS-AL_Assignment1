@@ -47,9 +47,18 @@ public class A2Q2 {
      * - n > 0
      */
     public static ArrayList<Move> threePegTOH(int n) {
-
         // TODO: Complete this method
-        return null; // Placeholder return statement. Should be changed when the method is implemented..
+    	ArrayList<Move> moves = new ArrayList<Move>();
+    	if(n == 1) {
+    		Move move = new Move(1,2);
+    		moves.add(move);
+    		return moves;
+    	}
+    	Move move = new Move(1,3);
+    	moves.add(move);
+   
+    	return moves;
+//        return null; // Placeholder return statement. Should be changed when the method is implemented..
     }
 
     /**
@@ -68,7 +77,6 @@ public class A2Q2 {
     }
 
     public static void main(String[] args) {
-
         System.out.println(threePegTOH(3));
         System.out.println(fourPegTOH(3));
     }
