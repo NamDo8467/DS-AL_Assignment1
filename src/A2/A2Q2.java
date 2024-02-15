@@ -68,7 +68,7 @@ public class A2Q2 {
     }
 
     public static void main(String[] args) {
-    	System.out.print("hahahah");
+
         System.out.println(threePegTOH(3));
         System.out.println(fourPegTOH(3));
     }
