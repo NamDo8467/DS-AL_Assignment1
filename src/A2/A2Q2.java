@@ -38,15 +38,52 @@ public class A2Q2 {
         public int getToPeg() { return this.toPeg; };
     }
     
-    public static void threePegTOHHelper(int n, ArrayList<Move> moves, int diskValue) {
-    	if(n == 1) {
-    		Move move = new Move(1,2);
-    		moves.add(move);
+    public static class MyStack {
+    	private int current_size = 0;
+    	
+    	private ArrayList<Integer> stack = new ArrayList<Integer>();
+    	public MyStack() {
     	}
     	
-    	Move move = new Move(1,3);
+    	void push(int element) {
+    		stack.add(element);
+    		current_size += 1;
+    	}
     	
-    	moves.add(move);
+    	int pop() {
+    		int top_of_the_stack = stack.remove(current_size - 1);
+    		current_size -= 1;
+    		return top_of_the_stack;
+    	}
+    	
+    	int peek() {
+    		if(current_size == 0) {
+    			return 0;
+    		}
+    		return stack.get(current_size-1);
+    	}
+    	boolean isEmpty() {
+    		return current_size == 0;
+    	}
+    	
+    	void print() {
+    		for(int i = 0; i < current_size; i++) {
+    			System.out.println(stack.get(i));
+    		}
+    	}
+    }
+    public static void threePegTOHHelper(int n, ArrayList<Move> moves, int from, int to, int auxiliary) {
+    	if(n == 1) {
+    		moves.add(new Move(from, to));
+    		System.out.println(from +" " + " " + to);
+    		return;
+    	}
+    	threePegTOHHelper(n-1, moves, from, auxiliary, to);
+    	moves.add(new Move(from, to));
+    	System.out.println(from +" " + " " + to);
+    	threePegTOHHelper(n-1, moves, auxiliary, to,from );
+    	
+    	
     }
 
     /**
@@ -60,13 +97,7 @@ public class A2Q2 {
     public static ArrayList<Move> threePegTOH(int n) {
         // TODO: Complete this method
     	ArrayList<Move> moves = new ArrayList<Move>();
-    	if(n == 1) {
-    		Move move = new Move(1,2);
-    		moves.add(move);
-    		return moves;
-    	}
-    	Move move = new Move(1,3);
-    	moves.add(move);
+    	threePegTOHHelper(n,moves, 1,2,3);
    
     	return moves;
 //        return null; // Placeholder return statement. Should be changed when the method is implemented..
@@ -88,7 +119,8 @@ public class A2Q2 {
     }
 
     public static void main(String[] args) {
-        System.out.println(threePegTOH(3));
-        System.out.println(fourPegTOH(3));
+//        System.out.println(threePegTOH(3));
+//        System.out.println(fourPegTOH(3));
+    	threePegTOH(3);
     }
 }

@@ -59,6 +59,7 @@ public class A2Tester {
         }
         int disk = pegs[from].remove(pegs[from].size()-1);
         if (!pegs[to].isEmpty() && disk >= pegs[to].get(pegs[to].size()-1)) {
+        	System.out.println(pegs[to].get(pegs[to].size()-1));
             throw new InvalidMoveException("Moving onto a smaller disk");
         }
         pegs[to].add(disk);
@@ -66,6 +67,7 @@ public class A2Tester {
     static boolean checkResult(ArrayList<Integer>[] pegs, int nDisks) {
 
         if (pegs[2].size() != nDisks) {
+        	System.out.println(pegs[2].size() + " line 69");
             return false;
         }
         for (int i = 0; i < pegs[2].size(); i++) {
@@ -86,7 +88,7 @@ public class A2Tester {
     public void test_example_01() {
 
         int nPegs = 3;
-        int nDisks = 2;
+        int nDisks = 3;
         try {
             ArrayList<Move> moves = runTOH(nPegs, nDisks);
             assertTrue(errMsg(nPegs, nDisks), checkMovesThreePeg(nPegs, nDisks, moves));
@@ -101,7 +103,7 @@ public class A2Tester {
     public void test_example_02() {
 
         int nPegs = 4;
-        int nDisks = 3;
+        int nDisks = 5;
         try {
             ArrayList<Move> moves = runTOH(nPegs, nDisks);
             assertTrue(errMsg(nPegs, nDisks), checkMovesThreePeg(nPegs, nDisks, moves));
