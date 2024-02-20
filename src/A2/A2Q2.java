@@ -4,6 +4,11 @@
  * Please read carefully the instructions in the assignment handout
  * and the starter code.
  */
+
+/**
+ * Author: Do Huynh
+ * Student ID: 220556908
+ */
 package A2;
 // Do NOT change the package!
 
