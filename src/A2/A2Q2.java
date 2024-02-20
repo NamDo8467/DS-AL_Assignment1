@@ -77,13 +77,13 @@ public class A2Q2 {
     public static void threePegTOHHelper(int n, ArrayList<Move> moves, int from, int to, int auxiliary) {
     	if(n == 1) {
     		moves.add(new Move(from, to));
-    		System.out.println(from +" " + " " + to+ " ");
+//    		System.out.println(from +" " + " " + to+ " ");
     		return;
     	}
     	//if n = 3 then
     	threePegTOHHelper(n-1, moves, from, auxiliary, to); // n=2; from = A, to = C, auxiliary = B -- n=1; from = A, to = B, auxiliary = C
     	moves.add(new Move(from, to)); // from = 1, to = 2
-    	System.out.println(from +" " + " " + to);
+//    	System.out.println(from +" " + " " + to);
     	threePegTOHHelper(n-1, moves, auxiliary, to,from ); // n = 2; from = C, to = B, auxiliary = A --- n = 1; from = A, to = B, aux = C
     	
     }
@@ -136,9 +136,7 @@ public class A2Q2 {
     }
 
     public static void main(String[] args) {
-//        System.out.println(threePegTOH(3));
-//        System.out.println(fourPegTOH(3));
-    	threePegTOH(3);
-    	fourPegTOH(5);
+        System.out.println(threePegTOH(3));
+        System.out.println(fourPegTOH(3));
     }
 }

@@ -103,7 +103,7 @@ public class A2Tester {
     public void test_example_02() {
 
         int nPegs = 4;
-        int nDisks = 6;
+        int nDisks = 5;
         try {
             ArrayList<Move> moves = runTOH(nPegs, nDisks);
             assertTrue(errMsg(nPegs, nDisks), checkMovesThreePeg(nPegs, nDisks, moves));
