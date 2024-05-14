@@ -25,7 +25,6 @@ class HashTable {
 
     // TODO: implement your own HashTable class
 	private Node table[];
-	private int i = 0; // this variable is used for linear probing
 	
 	public HashTable(int size) {
 		this.table = new Node [size];
@@ -62,12 +61,6 @@ class HashTable {
 		}
 		return defaultValue;
 	}
-//	public void print() {
-//		for(int i = 0; i < table.length; i++) {
-//			System.out.print(table[i]);
-//		}
-//	}
-//	
 	
 }
 public class A3Q2 {
@@ -83,13 +76,8 @@ public class A3Q2 {
      * Do NOT modify the signature of this function.
      */
     public static long solve(int A, int B, int C, int D, int E, int S) {
-
         // TODO: implement this function
-//    	 HashMap<Integer, Integer> table = new HashMap<>();
     	HashTable table = new HashTable(TABLE_SIZE);
-//    	 HashTable table2 = new HashTable(TABLE_SIZE);
-//    	 table2.print();
-//    	 int RANGE = 50;
          for (int x1 = -RANGE; x1 <= RANGE; x1++) {
              for (int x2 = -RANGE; x2 <= RANGE; x2++) {
                  int sum = A * x1 + B * (int) Math.pow(x2, 2);
