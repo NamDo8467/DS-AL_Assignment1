@@ -11,6 +11,8 @@ package A3;
  * Your own implementation of a HashTable class.
  * Add the appropriate fields and methods you want in order to solve this problem.
  */
+
+// Node class for the linked list
 class Node {
 	public int key;
 	public int value;
@@ -65,7 +67,7 @@ class HashTable {
 }
 public class A3Q2 {
 	public static int RANGE = 50;
-	public static int TABLE_SIZE = (RANGE + RANGE) * (RANGE + RANGE);
+	public static int TABLE_SIZE = 1037; // prime number that is greater than (RANGE + RANGE)^2
 	
     /**
      * Return the number of unique integer solutions where each integer is in the range [-50, 50].
